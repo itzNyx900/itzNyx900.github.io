@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Welcome to Nyx's Blog",
+        "author": "Nyx",
+        "date": "2026-06-19",
+        "category": "meta",
+        "filename": "welcome.html",
+        "excerpt": "Introducing Nyx's Blog - a space for security research, CEH preparation, and penetration testing notes. Green screen aesthetics meet modern web design."
+    },
+    {
+        "title": "Building Your First Penetration Testing Lab",
+        "author": "Nyx",
+        "date": "2026-06-18",
+        "category": "lab",
+        "filename": "pentest-lab.html",
+        "excerpt": "Step-by-step guide to setting up a complete penetration testing lab with Kali Linux, Docker containers, and vulnerable applications for hands-on learning."
+    }
+]
