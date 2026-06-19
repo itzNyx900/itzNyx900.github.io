@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Nyx's Blog - Security & Hacking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff41;
+            --secondary: #ffff00;
+            --dark: #0d0d0d;
+            --darker: #1a1a1a;
+            --accent: #ff006e;
+            --text: #e0e0e0;
+            --muted: #888888;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: var(--text);
+            font-family: 'Courier New', 'Consolas', monospace;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .back-navigation {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            padding: 8px 12px;
+        }
+
+        .back-navigation:hover {
+            border: 1px solid var(--primary);
+            padding-left: 16px;
+        }
+
+        .post-header {
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 30px;
+        }
+
+        .post-category-tag {
+            display: inline-block;
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--primary);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+            line-height: 1.2;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 25px;
+            color: var(--muted);
+            font-size: 0.9em;
+            flex-wrap: wrap;
+        }
+
+        .post-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .divider {
+            color: var(--primary);
+            text-align: center;
+            margin: 40px 0;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+        }
+
+        .post-content {
+            margin-bottom: 50px;
+        }
+
+        .post-content p {
+            margin-bottom: 18px;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .post-content h2 {
+            color: var(--secondary);
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .post-content h3 {
+            color: var(--primary);
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .post-content ul {
+            margin: 20px 0 20px 30px;
+            color: var(--text);
+        }
+
+        .post-content li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--secondary);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        a:hover {
+            border-bottom: 1px solid var(--secondary);
+            color: var(--primary);
+        }
+
+        .post-footer {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid var(--primary);
+            padding: 25px;
+            margin-top: 50px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .post-footer-text {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .post-footer-divider {
+            color: var(--primary);
+            margin: 12px 0;
+            letter-spacing: 2px;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 65, 0.03) 0px,
+                rgba(0, 255, 65, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .post-content h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <a href="../index.html" class="back-navigation">← Back to Blog</a>
+
+        <article class="post-header">
+            <div class="post-category-tag">Meta</div>
+            <h1>Welcome to Nyx's Blog</h1>
+            <div class="post-meta">
+                <div class="post-meta-item">📅 June 19, 2026</div>
+                <div class="post-meta-item">✍️ Sina</div>
+                <div class="post-meta-item">⏱️ 3 min read</div>
+            </div>
+        </article>
+
+        <div class="divider">≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡</div>
+
+        <div class="post-content">
+            <p>
+                Welcome to <span class="highlight">Nyx's Blog</span> — a space dedicated to security research, ethical hacking, and the journey toward mastering penetration testing. This is where I document my path through the CEH certification and share practical insights from hands-on security work.
+            </p>
+
+            <h2>What You'll Find Here</h2>
+            <p>
+                This blog covers real-world security topics that matter:
+            </p>
+            <ul>
+                <li><strong>CEH Preparation:</strong> Study notes, exam strategies, and certification insights</li>
+                <li><strong>Penetration Testing:</strong> Lab setups, vulnerability discoveries, and exploitation techniques</li>
+                <li><strong>Security Tools:</strong> Deep dives into Kali Linux utilities, Burp Suite, Metasploit, and more</li>
+                <li><strong>Lab Documentation:</strong> Building and configuring test environments with Docker, VirtualBox, and vulnerable applications</li>
+                <li><strong>Research & Analysis:</strong> Security vulnerabilities, attack vectors, and defense mechanisms</li>
+            </ul>
+
+            <h2>Why This Blog Exists</h2>
+            <p>
+                Security knowledge thrives when it's shared. This blog serves as both a learning journal and a resource for others pursuing ethical hacking. Each post represents hands-on experience, not just theory. Everything here is documented in a practical, implementable way.
+            </p>
+
+            <h2>The Nyx Aesthetic</h2>
+            <p>
+                You'll notice the classic retro terminal aesthetic — green phosphor screens, minimal design, pure content. Why? Because the early internet had it right. No tracking, no ads, no bloat. Just information, code, and ideas flowing freely across the network.
+            </p>
+
+            <h2>Getting Started</h2>
+            <p>
+                Explore the <a href="../index.html">main page</a> to browse all posts by category:
+            </p>
+            <ul>
+                <li><strong>CEH:</strong> Certification-focused content</li>
+                <li><strong>Pentest:</strong> Penetration testing techniques and findings</li>
+                <li><strong>Tools:</strong> How to use security tools effectively</li>
+                <li><strong>Lab Setup:</strong> Building your own testing environment</li>
+            </ul>
+
+            <h2>Let's Begin</h2>
+            <p>
+                Whether you're studying for CEH, building your first lab, or diving deep into security research — welcome aboard. The hacking community thrives on curiosity, persistence, and knowledge sharing. That's what this space is about.
+            </p>
+
+            <p>
+                Happy hacking. 🎛️
+            </p>
+        </div>
+
+        <div class="divider">≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡</div>
+
+        <div class="post-footer">
+            <div class="post-footer-text">[ END OF POST ]</div>
+            <div class="post-footer-divider">≡≡≡≡≡≡≡≡≡≡≡</div>
+            <div class="post-footer-text"><a href="../index.html">← Return to Blog Home</a></div>
+        </div>
+    </div>
+</body>
+</html>

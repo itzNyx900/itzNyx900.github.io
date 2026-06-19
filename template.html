@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Title - Nyx's Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff41;
+            --secondary: #ffff00;
+            --dark: #0d0d0d;
+            --darker: #1a1a1a;
+            --accent: #ff006e;
+            --text: #e0e0e0;
+            --muted: #888888;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: var(--text);
+            font-family: 'Courier New', 'Consolas', monospace;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .back-navigation {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            padding: 8px 12px;
+        }
+
+        .back-navigation:hover {
+            border: 1px solid var(--primary);
+            padding-left: 16px;
+        }
+
+        .post-header {
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 30px;
+        }
+
+        .post-category-tag {
+            display: inline-block;
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--primary);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+            line-height: 1.2;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 25px;
+            color: var(--muted);
+            font-size: 0.9em;
+            flex-wrap: wrap;
+        }
+
+        .post-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .divider {
+            color: var(--primary);
+            text-align: center;
+            margin: 40px 0;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+        }
+
+        .post-content {
+            margin-bottom: 50px;
+        }
+
+        .post-content p {
+            margin-bottom: 18px;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .post-content h2 {
+            color: var(--secondary);
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .post-content h3 {
+            color: var(--primary);
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .post-content ul,
+        .post-content ol {
+            margin: 20px 0 20px 30px;
+            color: var(--text);
+        }
+
+        .post-content li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.7);
+            border-left: 4px solid var(--accent);
+            border: 1px solid var(--primary);
+            padding: 20px;
+            margin: 25px 0;
+            overflow-x: auto;
+            color: var(--primary);
+            font-size: 0.9em;
+            line-height: 1.5;
+            border-radius: 4px;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+        }
+
+        .highlight {
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--secondary);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .quote-block {
+            border-left: 4px solid var(--secondary);
+            padding-left: 20px;
+            margin: 25px 0;
+            color: var(--secondary);
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        a:hover {
+            border-bottom: 1px solid var(--secondary);
+            color: var(--primary);
+        }
+
+        .post-footer {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid var(--primary);
+            padding: 25px;
+            margin-top: 50px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .post-footer-text {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .post-footer-divider {
+            color: var(--primary);
+            margin: 12px 0;
+            letter-spacing: 2px;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 65, 0.03) 0px,
+                rgba(0, 255, 65, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .post-content h2 {
+                font-size: 1.4em;
+            }
+
+            .post-meta {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <a href="../index.html" class="back-navigation">← Back to Blog</a>
+
+        <article class="post-header">
+            <div class="post-category-tag">CATEGORY</div>
+            <h1>Your Post Title Goes Here</h1>
+            <div class="post-meta">
+                <div class="post-meta-item">📅 June 20, 2026</div>
+                <div class="post-meta-item">✍️ Sina</div>
+                <div class="post-meta-item">⏱️ 5 min read</div>
+            </div>
+        </article>
+
+        <div class="divider">≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡</div>
+
+        <div class="post-content">
+            <p>Start your post here. Write an engaging introduction that explains what the reader will learn.</p>
+
+            <h2>Section Title</h2>
+            <p>
+                Each section explores a different aspect of your topic. Keep paragraphs focused and concise. 
+                Use <span class="highlight">highlights</span> for important concepts.
+            </p>
+
+            <h3>Subsection</h3>
+            <p>Break down complex ideas into digestible chunks.</p>
+
+            <h2>Code Examples</h2>
+            <p>Use code blocks to share commands or code snippets:</p>
+
+            <div class="code-block">
+$ kali@linux: nmap -A -p- 192.168.1.100
+Starting Nmap 7.92...
+Nmap scan report for 192.168.1.100
+            </div>
+
+            <h2>Key Takeaways</h2>
+            <ul>
+                <li>Point one about what you learned or discovered</li>
+                <li>Point two with actionable insight</li>
+                <li>Point three to reinforce the main message</li>
+            </ul>
+
+            <div class="quote-block">
+                "Security is not about perfection, it's about making informed decisions and continuously improving."
+            </div>
+
+            <h2>Next Steps</h2>
+            <p>
+                What should readers do with this information? Link to related posts or suggest next topics to explore.
+            </p>
+
+            <p>Thanks for reading! If you have questions or feedback, feel free to reach out.</p>
+        </div>
+
+        <div class="divider">≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡</div>
+
+        <div class="post-footer">
+            <div class="post-footer-text">[ END OF POST ]</div>
+            <div class="post-footer-divider">≡≡≡≡≡≡≡≡≡≡≡</div>
+            <div class="post-footer-text"><a href="../index.html">← Return to Blog Home</a></div>
+        </div>
+    </div>
+</body>
+</html>
