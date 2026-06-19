@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETRO BLOG - Sina's Security Notes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a1a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            border: 3px solid #00ff00;
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px dashed #00ff00;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #00ff00;
+            margin-bottom: 10px;
+            animation: flicker 0.15s infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { text-shadow: 0 0 10px #00ff00; }
+            50% { text-shadow: 0 0 5px #00ff00; }
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #ffff00;
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .post-list {
+            list-style: none;
+        }
+        
+        .post-item {
+            background: #000;
+            border: 2px solid #00ff00;
+            margin-bottom: 20px;
+            padding: 15px;
+            transition: all 0.3s;
+        }
+        
+        .post-item:hover {
+            box-shadow: 0 0 20px #00ff00;
+            transform: translateX(5px);
+        }
+        
+        .post-item a {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        
+        .post-item a:hover {
+            color: #ffff00;
+            text-decoration: underline;
+        }
+        
+        .post-meta {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+        
+        .post-excerpt {
+            color: #aaa;
+            margin-top: 8px;
+            font-size: 0.95em;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 3px dashed #00ff00;
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .divider {
+            color: #00ff00;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>▄▀▄▀▄▀ RETRO BLOG ▀▄▀▄▀▄</h1>
+        <p class="subtitle">Security Notes & CEH Learning</p>
+        <p class="date">Est. 2026</p>
+    </header>
+
+    <div class="container">
+        <div class="divider">≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡</div>
+        
+        <ul class="post-list" id="postList">
+            <!-- Posts will be loaded here from posts.json -->
+        </ul>
+
+        <div class="divider">≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡</div>
+    </div>
+
+    <footer>
+        <p>[ RETRO BLOG v1.0 ] | Green screen aesthetic | No JavaScript required</p>
+        <p>Created with ❤️ from the command line</p>
+    </footer>
+
+    <script>
+        // Load posts from posts.json
+        fetch('posts.json')
+            .then(response => response.json())
+            .then(posts => {
+                const postList = document.getElementById('postList');
+                posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                posts.forEach(post => {
+                    const li = document.createElement('li');
+                    li.className = 'post-item';
+                    li.innerHTML = `
+                        <a href="posts/${post.filename}">${post.title}</a>
+                        <div class="post-meta">📅 ${post.date} | ✍️ ${post.author}</div>
+                        <div class="post-excerpt">${post.excerpt}</div>
+                    `;
+                    postList.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>

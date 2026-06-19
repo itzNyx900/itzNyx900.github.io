@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Retro Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a1a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+            padding: 20px;
+            border: 3px solid #00ff00;
+        }
+        
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        
+        .post-meta {
+            color: #888;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #00ff00;
+            padding-bottom: 15px;
+        }
+        
+        .post-content {
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .post-content p {
+            margin-bottom: 15px;
+        }
+        
+        .post-content h2 {
+            color: #ffff00;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .post-content ul, .post-content ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .post-content li {
+            margin-bottom: 8px;
+        }
+        
+        .code-block {
+            background: #000;
+            border: 1px solid #00ff00;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            color: #00ff00;
+        }
+        
+        a {
+            color: #ffff00;
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .back-link a {
+            color: #00ff00;
+            font-size: 1.1em;
+        }
+        
+        footer {
+            border-top: 2px dashed #00ff00;
+            padding-top: 15px;
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <div class="back-link">
+            <a href="../index.html">← Back to Blog</a>
+        </div>
+
+        <h1>Welcome to the Retro Blog</h1>
+        
+        <div class="post-meta">
+            By Sina | Published on June 19, 2026 | Tags: #meta #retro
+        </div>
+
+        <div class="post-content">
+            <p>Welcome to my retro-styled blog! This is a green-screen aesthetic space for documenting security research, CEH learning, and penetration testing notes.</p>
+
+            <h2>Why Retro?</h2>
+            <p>Because the early internet was cooler than you remember. Green phosphor screens, minimal design, pure content. No tracking, no ads, no bloat.</p>
+
+            <h2>What You'll Find Here</h2>
+            <ul>
+                <li>CEH certification progress and notes</li>
+                <li>Penetration testing lab writeups</li>
+                <li>Security research and findings</li>
+                <li>Tool reviews and configurations</li>
+                <li>Learning resources and guides</li>
+            </ul>
+
+            <h2>How to Add Your Own Posts</h2>
+            <p>It's simple! Follow the guide in your README.md file.</p>
+
+            <div class="code-block">
+# To add a new post:
+1. Create post in posts/ folder
+2. Add entry to posts.json
+3. git push
+            </div>
+
+            <p>Enjoy the retro vibes and happy hacking! 🎛️</p>
+        </div>
+
+        <footer>
+            <p>[ END OF POST ] | Return to index.html to see all posts</p>
+        </footer>
+    </div>
+</body>
+</html>

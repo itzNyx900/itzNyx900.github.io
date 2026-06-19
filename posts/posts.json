@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Welcome to the Retro Blog",
+        "author": "Sina",
+        "date": "2026-06-19",
+        "filename": "welcome.html",
+        "excerpt": "Getting started with retro-style blogging. A green screen aesthetic for security notes and CEH learning."
+    },
+    {
+        "title": "Setting up Kali Linux Lab",
+        "author": "Sina",
+        "date": "2026-06-18",
+        "filename": "kali-setup.html",
+        "excerpt": "Initial setup of penetration testing environment with Docker and VirtualBox."
+    }
+]
